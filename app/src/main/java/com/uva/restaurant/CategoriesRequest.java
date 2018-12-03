@@ -1,6 +1,7 @@
 package com.uva.restaurant;
 
 import android.content.Context;
+import android.content.Intent;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -18,9 +19,10 @@ public class CategoriesRequest implements Response.Listener<JSONObject>, Respons
 
     private Context context;
     private ArrayList<String> dict;
+    private Callback callings;
     @Override
     public void onErrorResponse(VolleyError error) {
-
+        callings.gotCategoriesError(error.getMessage());
     }
 
     @Override
@@ -33,15 +35,13 @@ public class CategoriesRequest implements Response.Listener<JSONObject>, Respons
                 dict.add(categories.getString(i));
             }
 
-            //activity.gotCategories(dict);
         }
 
         catch (JSONException e){
             System.out.println(e.getMessage());
         }
 
-
-
+        callings.gotCategories(dict);
     }
 
     public interface Callback {
@@ -59,7 +59,7 @@ public class CategoriesRequest implements Response.Listener<JSONObject>, Respons
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest("https://resto.mprog.nl/categories", null, this, this);
         queue.add(jsonObjectRequest);
 
-
+        callings = activity;
 
     }
 }
