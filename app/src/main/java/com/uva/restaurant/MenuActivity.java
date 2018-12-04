@@ -41,8 +41,14 @@ public class MenuActivity extends AppCompatActivity implements MenuRequest.Callb
     private class ListViewClickListener implements AdapterView.OnItemClickListener{
         @Override
         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-            Intent intent = new Intent(MenuActivity.this, CategoriesActivity.class);
-            //intent.putExtra("categories", adapterView.getItemAtPosition(i).toString());
+
+            MenuItem item = (MenuItem) adapterView.getItemAtPosition(i);
+            Intent intent = new Intent(MenuActivity.this, MenuItemActivity.class);
+            intent.putExtra("name", item.getName());
+            intent.putExtra("description", item.getDescription());
+            intent.putExtra("img", item.getImageUrl());
+            intent.putExtra("price", Double.toString(item.getPrice()));
+
             startActivity(intent);
         }
     }
