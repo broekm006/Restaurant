@@ -4,11 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CategoriesActivity"
+    tools:context=".MenuActivity"
     android:orientation="vertical">
 
     <ListView
-        android:id="@+id/cato_list"
+        android:id="@+id/menu_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 </LinearLayout>
