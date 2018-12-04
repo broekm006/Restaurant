@@ -13,7 +13,6 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 public class MenuActivity extends AppCompatActivity implements MenuRequest.Callback {
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,7 +24,7 @@ public class MenuActivity extends AppCompatActivity implements MenuRequest.Callb
     }
 
     public void gotMenu(ArrayList<MenuItem> menu) {
-        Toast.makeText(this, "ello", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "", Toast.LENGTH_LONG).show();
 
         // change arrayadapter to custom view > custom adapter
         MenuCustomAdapter adapter = new MenuCustomAdapter(this, menu);

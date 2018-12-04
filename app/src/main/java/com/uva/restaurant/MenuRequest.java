@@ -33,15 +33,12 @@ public class MenuRequest implements Response.Listener<JSONObject>, Response.Erro
                 //dict.add(array.getString(i));
                 //String category = response.getString("category");
                 JSONObject specific = array.getJSONObject(i);
-                System.out.println(specific);
-
-                if (test.equals(specific)){
+                if (test.equals(specific.get("category"))){
                     String category = specific.getString("category");
                     String name = specific.getString("name");
                     String description = specific.getString("description");
                     double price = specific.getDouble("price");
                     String imageUrl = specific.getString("image_url");
-
                     dict.add(new MenuItem(name, description, imageUrl, price, category));
                 }
             }
