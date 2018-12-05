@@ -19,11 +19,13 @@ public class MenuItemActivity extends AppCompatActivity {
         setContentView(R.layout.activity_menu_item);
         Intent intent = getIntent();
 
+        // gather detail view information
         TextView name = findViewById(R.id.detail_title);
         ImageView img = findViewById(R.id.detail_img);
         TextView description = findViewById(R.id.detail_description);
         TextView price = findViewById(R.id.detail_price);
 
+        // update detail screen with correct details
         name.setText(intent.getStringExtra("name"));
         Picasso.get().load(intent.getStringExtra("img")).resize(650,650).into(img);
         description.setText(intent.getStringExtra("description"));

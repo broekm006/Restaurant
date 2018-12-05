@@ -13,6 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="37dp"
         android:layout_gravity="center"
+        android:fontFamily="@font/aclonica"
         android:text="TextView"
         android:textAlignment="center"
         android:textSize="18sp" />
@@ -26,9 +27,10 @@
     <TextView
         android:id="@+id/detail_description"
         android:layout_width="match_parent"
-        android:layout_height="89dp"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="10p"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/aclonica"
         android:text="TextView"
         android:textAlignment="center"
         android:textSize="12sp" />
@@ -38,6 +40,8 @@
         android:layout_width="match_parent"
         android:layout_height="37dp"
         android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/aclonica"
         android:text="TextView"
         android:textAlignment="center"
         android:textSize="12sp" />

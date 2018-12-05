@@ -18,21 +18,24 @@ import java.util.ArrayList;
 public class CategoriesRequest implements Response.Listener<JSONObject>, Response.ErrorListener {
 
     private Context context;
-    private ArrayList<String> dict;
-    private Callback callings;
+    private ArrayList<String> newList;
+    private Callback callback;
     @Override
+    // if error print message
     public void onErrorResponse(VolleyError error) {
-        callings.gotCategoriesError(error.getMessage());
+        callback.gotCategoriesError(error.getMessage());
     }
 
     @Override
     public void onResponse(JSONObject response) {
+        // Attempt to retrieve JSONObject
         try {
             JSONArray categories = response.getJSONArray("categories");
-            dict  = new ArrayList<String>();
+            newList  = new ArrayList<String>();
 
+            // loop through categories and add each one to the new list
             for (int i = 0; i < categories.length(); i++) {
-                dict.add(categories.getString(i));
+                newList.add(categories.getString(i));
             }
 
         }
@@ -41,7 +44,7 @@ public class CategoriesRequest implements Response.Listener<JSONObject>, Respons
             System.out.println(e.getMessage());
         }
 
-        callings.gotCategories(dict);
+        callback.gotCategories(newList);
     }
 
     public interface Callback {
@@ -54,12 +57,12 @@ public class CategoriesRequest implements Response.Listener<JSONObject>, Respons
     }
 
     void getCategories(Callback activity){
+        // use Volley to request new JSONObject with given URL
         RequestQueue queue = Volley.newRequestQueue(context);
-
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest("https://resto.mprog.nl/categories", null, this, this);
         queue.add(jsonObjectRequest);
 
-        callings = activity;
+        callback = activity;
 
     }
 }

@@ -24,8 +24,6 @@ public class MenuActivity extends AppCompatActivity implements MenuRequest.Callb
     }
 
     public void gotMenu(ArrayList<MenuItem> menu) {
-        Toast.makeText(this, "", Toast.LENGTH_LONG).show();
-
         // change arrayadapter to custom view > custom adapter
         MenuCustomAdapter adapter = new MenuCustomAdapter(this, menu);
         ListView listView = (ListView) findViewById(R.id.menu_list);

@@ -19,27 +19,27 @@ public class CategoriesActivity extends AppCompatActivity implements CategoriesR
         setContentView(R.layout.activity_categories);
         CategoriesRequest x = new CategoriesRequest(this);
         x.getCategories(this);
-        Toast.makeText(this, "Started", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void gotCategories(ArrayList<String> categories) {
-        Toast.makeText(this, categories.get(0), Toast.LENGTH_LONG).show();
-
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, categories);
-        ListView listView = (ListView) findViewById(R.id.cato_list);
+        // create new adapter for the listview with the list of categories
+        ArrayAdapter<String> adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, categories);
+        ListView listView = findViewById(R.id.cato_list);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new ListViewClickListener());
     }
 
     @Override
     public void gotCategoriesError(String message) {
+        // if error show on screen
         Toast.makeText(this, message, Toast.LENGTH_LONG).show();
     }
 
     private class ListViewClickListener implements AdapterView.OnItemClickListener{
         @Override
         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+            // when item is selected continue to menu with of the selected catogorie
             Intent intent = new Intent(CategoriesActivity.this, MenuActivity.class);
             intent.putExtra("categories", adapterView.getItemAtPosition(i).toString());
             startActivity(intent);
