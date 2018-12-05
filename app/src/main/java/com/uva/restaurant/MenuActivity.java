@@ -29,7 +29,6 @@ public class MenuActivity extends AppCompatActivity implements MenuRequest.Callb
         ListView listView = (ListView) findViewById(R.id.menu_list);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new ListViewClickListener());
-        System.out.println("sad" + adapter.getCount());
     }
 
     public void gotMenuError(String message) {

@@ -24,7 +24,7 @@ public class CategoriesActivity extends AppCompatActivity implements CategoriesR
     @Override
     public void gotCategories(ArrayList<String> categories) {
         // create new adapter for the listview with the list of categories
-        ArrayAdapter<String> adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, categories);
+        ArrayAdapter<String> adapter = new ArrayAdapter(this, R.layout.txtview, categories);
         ListView listView = findViewById(R.id.cato_list);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new ListViewClickListener());

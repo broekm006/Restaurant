@@ -5,6 +5,7 @@ import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
@@ -27,8 +28,13 @@ public class MenuItemActivity extends AppCompatActivity {
 
         // update detail screen with correct details
         name.setText(intent.getStringExtra("name"));
-        Picasso.get().load(intent.getStringExtra("img")).resize(650,650).into(img);
+        Picasso.get().load(intent.getStringExtra("img"))
+                .resize(650,650)
+                //.placeholder(R.drawable.pika)
+                .error(R.drawable.pika)
+                .into(img);
         description.setText(intent.getStringExtra("description"));
         price.setText("$ " + (intent.getStringExtra("price")));
+
     }
 }

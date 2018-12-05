@@ -40,10 +40,12 @@ public class MenuCustomAdapter extends ArrayAdapter<MenuItem>{
         name.setText(menuItem.getName());
         price.setText("$ " + Double.toString(menuItem.getPrice()));
 
-        // picasso for the win!! image translation with ease
-        Picasso.get().load(menuItem.getImageUrl()).resize(350,350).into(image_url);
+        Picasso.get().load(menuItem.getImageUrl())
+                .resize(350, 350)
+                //.placeholder(R.drawable.pika)
+                .error(R.drawable.pika)
+                .into(image_url);
 
         return convertView;
-
     }
 }
