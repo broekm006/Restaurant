@@ -1,7 +1,6 @@
 package com.uva.restaurant;
 
 import android.content.Context;
-import android.content.Intent;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
